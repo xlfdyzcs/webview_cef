@@ -89,6 +89,21 @@ Then follow the below steps inside the `macos/` folder <b>of the cloned reposito
 This part of the content needs to be summarized. You can refer to the methods in the example first(Very similar to on the Windows). In addition, you need to modify the method of copying resources in the linux/CMakeLists.txt under your own project to be consistent with that in windows. Otherwise, the resource files cannot be copied properly under linux.
 ![image](https://github.com/hlwhl/webview_cef/assets/49640121/dd03a510-2bc1-4c73-bf9c-ba4b5abee135)
 
+#### 问题：
+1，webview_cef/common/webview_value.cc：
+  - error: use of undeclared identifier 'free'
+  - error: use of undeclared identifier 'malloc'
+
+fix：
+In that file（webview_cef/common/webview_value.cc）, add the header:
+#include <cstdlib>
+
+2，webview_cef/linux/webview_cef_plugin.cc:273:11:
+  - error: variable 'res' set but not used
+
+fix：
+Comment variable ‘res’ or printf it
+
 ## TODOs
 
 > Pull requests are welcome.
